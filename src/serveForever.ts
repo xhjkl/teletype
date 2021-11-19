@@ -39,7 +39,7 @@ export default async () => {
     )
   })
 
-  app.listen(port, (error, address) => {
+  app.listen(port, '0.0.0.0', (error, address) => {
     if (error != null) {
       throw error
     }
