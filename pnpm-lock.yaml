@@ -19,9 +19,8 @@ specifiers:
   esbuild: '*'
   eslint-config-prettier: '*'
   fastify: '*'
-  fastify-cors: '*'
   fastify-static: '*'
-  graphql: '*'
+  graphql: ^15
   jest: '*'
   prettier: '*'
   prisma: '*'
@@ -45,7 +44,6 @@ dependencies:
   dotenv: 10.0.0
   esbuild: 0.13.13
   fastify: 3.23.1
-  fastify-cors: 6.0.2
   fastify-static: 4.5.0
   graphql: 15.7.2
   react: 17.0.2
