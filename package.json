@@ -1,0 +1,64 @@
+{
+  "name": "@xhjkl/teletype",
+  "version": "0.0.13",
+  "description": "a platform to share ideas",
+  "main": "src/server.ts",
+  "scripts": {
+    "start": "ts-node -r dotenv/config src/server.ts",
+    "migrate": "prisma db deploy",
+    "test": "jest",
+    "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
+    "format": "prettier --write --plugin-search-dir=. ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "keywords": [
+    "web",
+    "log"
+  ],
+  "author": "me",
+  "license": "UNLICENSED",
+  "private": true,
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "setupFiles": [
+      "dotenv/config"
+    ]
+  },
+  "dependencies": {
+    "@apollo/client": "*",
+    "@emotion/css": "*",
+    "@emotion/react": "*",
+    "@emotion/server": "*",
+    "@graphql-tools/schema": "*",
+    "@prisma/client": "*",
+    "@swc/core": "*",
+    "apollo-server-core": "*",
+    "apollo-server-fastify": "*",
+    "dotenv": "*",
+    "esbuild": "*",
+    "fastify": "*",
+    "fastify-static": "*",
+    "graphql": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-router-dom": "*",
+    "ts-node": "*",
+    "typescript": "*"
+  },
+  "devDependencies": {
+    "@types/jest": "*",
+    "@types/node": "*",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "@typescript-eslint/eslint-plugin": "*",
+    "eslint-config-prettier": "*",
+    "jest": "*",
+    "prettier": "*",
+    "prisma": "*",
+    "ts-jest": "*"
+  }
+}
