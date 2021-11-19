@@ -23,12 +23,6 @@ export default async () => {
     prefix: '/-/',
   })
 
-  app.register(cors, {
-    origin: '*',
-    methods: ['HEAD', 'GET', 'POST'],
-    allowedHeaders: ['Origin', 'Accept', 'Content-Type', 'Content-Length'],
-  })
-
   await addQueryResolver(app)
 
   app.get('*', async (req, res) => {
