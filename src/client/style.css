@@ -1,0 +1,184 @@
+html,
+body,
+#root {
+  display: grid;
+  font: 100% system-ui;
+  background: black;
+  color: white;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+#root {
+  grid: auto-flow min-content / auto;
+}
+
+a,
+h1,
+h2,
+h3,
+p {
+  color: inherit;
+  text-decoration: none;
+  transition: 2s;
+  margin: auto 0;
+  padding: 0;
+}
+
+p.author {
+  font-variant: small-caps;
+  opacity: 0.8;
+}
+
+p,
+h1,
+h2 {
+  padding: 0 16px;
+}
+
+input,
+textarea {
+  color: inherit;
+  font-family: monospace;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #eee;
+}
+
+textarea {
+  position: relative;
+  min-height: 128px;
+  resize: vertical;
+}
+
+textarea::placeholder {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+}
+
+button {
+  color: inherit;
+  cursor: pointer;
+  padding: 16px;
+  border: 4px solid white;
+  border-radius: 1337px;
+  background: transparent;
+  font-variant: small-caps;
+  text-transform: uppercase;
+  min-width: 101px;
+}
+
+button:active {
+  opacity: 0.6;
+}
+
+div.row {
+  display: grid;
+  grid: auto / minmax(auto, 720px);
+  justify-content: center;
+  transition: 2s;
+}
+
+div.row.small {
+  grid: 32px / minmax(auto, 720px);
+}
+
+div.row.mid {
+  grid: 64px / minmax(auto, 720px);
+}
+
+div.row.spaced {
+  margin-bottom: 16px;
+}
+
+div.hero {
+  background: #111;
+  max-height: 200px;
+  overflow: hidden;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+img.hero {
+  object-fit: cover;
+}
+
+div.feed.container {
+  padding: 128px 0 16px;
+}
+
+div.feed.article {
+  border: 1px solid #111;
+  border-left: none;
+  border-right: none;
+  margin: 32px 0;
+  padding: 16px 0 32px;
+}
+
+div.overlay {
+  display: grid;
+  grid: 64px / auto-flow auto;
+  gap: 8px;
+  justify-content: end;
+  height: 0;
+  margin: 0 16px;
+}
+
+div.sticky {
+  position: sticky;
+  top: 32px;
+}
+
+div.bottommost {
+  position: fixed;
+  bottom: 72px;
+  right: -4px;
+}
+
+@keyframes flash-in {
+  from {
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  8% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html,
+  body,
+  #root {
+    color: black;
+    background: #fefefe;
+  }
+
+  button {
+    border-color: black;
+  }
+
+  div.hero {
+    background: black;
+  }
+}
