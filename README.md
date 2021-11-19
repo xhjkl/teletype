@@ -4,6 +4,7 @@ A publishing platform.
 
 To bring up the project, issue:
 ```shell
+  $ echo DATABASE_URL='postgres://...' > .env
   $ pnpm migrate
   $ pnpm run start
 ```
