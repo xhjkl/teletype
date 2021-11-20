@@ -1,6 +1,9 @@
-import * as React from 'react'
+/** @jsx createElement */
+import { createElement } from 'react'
 
-export default ({ src }) => (
+type Props = { src?: string }
+
+export default ({ src }: Props) => (
   <div className='hero row'>
     <img className='hero' src={src} />
   </div>

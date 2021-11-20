@@ -1,4 +1,6 @@
-import * as React from 'react'
+/** @jsx createElement */
+/** @jsxFrag Fragment */
+import { Fragment, createElement, useCallback, useRef } from 'react'
 
 import Button from './Button'
 
@@ -20,7 +22,7 @@ type Props = {
   ) => void
 }
 
-const Editor: React.FC<Props> = ({
+const Editor = ({
   defaultTitle,
   defaultAuthor,
   defaultHeroImageAddress,
@@ -30,13 +32,13 @@ const Editor: React.FC<Props> = ({
   couldUpdate = false,
   couldRemove = false,
   onSubmit,
-}) => {
-  const titleRef = React.useRef<HTMLInputElement>()
-  const heroImageLocationRef = React.useRef<HTMLInputElement>()
-  const authorRef = React.useRef<HTMLInputElement>()
-  const bodyRef = React.useRef<HTMLTextAreaElement>()
+}: Props) => {
+  const titleRef = useRef<HTMLInputElement>()
+  const heroImageLocationRef = useRef<HTMLInputElement>()
+  const authorRef = useRef<HTMLInputElement>()
+  const bodyRef = useRef<HTMLTextAreaElement>()
 
-  const handleSubmit = React.useCallback(
+  const handleSubmit = useCallback(
     (action) => {
       onSubmit != null &&
         onSubmit(
@@ -50,13 +52,13 @@ const Editor: React.FC<Props> = ({
     [onSubmit, titleRef, authorRef, heroImageLocationRef, bodyRef]
   )
 
-  const handleCreate = React.useCallback(() => {
+  const handleCreate = useCallback(() => {
     handleSubmit('create')
   }, [onSubmit])
-  const handleUpdate = React.useCallback(() => {
+  const handleUpdate = useCallback(() => {
     handleSubmit('update')
   }, [onSubmit])
-  const handleRemove = React.useCallback(() => {
+  const handleRemove = useCallback(() => {
     handleSubmit('remove')
   }, [onSubmit])
 
@@ -68,7 +70,7 @@ const Editor: React.FC<Props> = ({
           defaultValue={defaultTitle || void ''}
           placeholder={'Title...'}
           tabIndex={1}
-          ref={titleRef}
+          ref={titleRef as never}
         />
       </div>
       <div className='row small' style={{ opacity: +shouldShowWarnings }}>
@@ -79,7 +81,7 @@ const Editor: React.FC<Props> = ({
           defaultValue={defaultHeroImageAddress || void ''}
           placeholder={'Hero image location...'}
           tabIndex={-1}
-          ref={heroImageLocationRef}
+          ref={heroImageLocationRef as never}
         />
       </div>
       <div className='row small' style={{ opacity: +shouldShowWarnings }}>
@@ -90,7 +92,7 @@ const Editor: React.FC<Props> = ({
           defaultValue={defaultAuthor || void ''}
           placeholder={'Your name...'}
           tabIndex={2}
-          ref={authorRef}
+          ref={authorRef as never}
         />
       </div>
       <div className='row small' style={{ opacity: +shouldShowWarnings }}>
@@ -101,7 +103,7 @@ const Editor: React.FC<Props> = ({
           defaultValue={defaultBody || void ''}
           placeholder={'Your story...'}
           tabIndex={3}
-          ref={bodyRef}
+          ref={bodyRef as never}
         />
       </div>
       <div className='row small' style={{ opacity: +shouldShowWarnings }}>

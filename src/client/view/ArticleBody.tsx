@@ -1,6 +1,10 @@
-import * as React from 'react'
+/** @jsx createElement */
+/** @jsxFrag Fragment */
+import { Fragment, ReactNode, createElement } from 'react'
 
-export default ({ children }) => (
+type Props = { children: ReactNode }
+
+export default ({ children }: Props) => (
   <>
     <div className='row small' />
     <div className='row'>

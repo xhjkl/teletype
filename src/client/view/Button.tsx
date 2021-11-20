@@ -1,3 +1,9 @@
-import * as React from 'react'
+/** @jsx createElement */
+import { ButtonHTMLAttributes, DetailedHTMLProps, createElement } from 'react'
 
-export default (props) => <button {...props} />
+export default (
+  props: DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >
+) => <button {...props} />

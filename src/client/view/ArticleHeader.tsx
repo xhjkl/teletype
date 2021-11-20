@@ -1,7 +1,12 @@
-import * as React from 'react'
+/** @jsx createElement */
+import { ReactNode, createElement } from 'react'
 
-export default ({ children }) => (
+type Props = { children: ReactNode }
+
+export const ArticleHeader = ({ children }: Props) => (
   <div className='row mid'>
     <h1>{children}</h1>
   </div>
 )
+
+export default ArticleHeader
