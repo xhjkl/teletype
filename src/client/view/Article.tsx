@@ -1,11 +1,19 @@
-import * as React from 'react'
-
-import { ArticleContent } from '../../lib/types'
+/** @jsx createElement */
+/** @jsxFrag Fragment */
+import { Fragment, createElement } from 'react'
 
 import ArticleHeader from './ArticleHeader'
 import ArticleAuthor from './ArticleAuthor'
 import ArticleHeroImage from './ArticleHeroImage'
 import ArticleBody from './ArticleBody'
+
+type Props = {
+  title?: string
+  author?: string
+  imageAddress?: string
+  publicationDate?: string
+  body?: string
+}
 
 export default ({
   title,
@@ -13,7 +21,7 @@ export default ({
   imageAddress,
   publicationDate,
   body,
-}: ArticleContent) => {
+}: Props) => {
   return (
     <>
       <div className='row mid' />

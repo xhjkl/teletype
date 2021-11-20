@@ -33,6 +33,14 @@ const ControlCenter = () => {
     navigate('/article/new')
   }, [navigate])
 
+  const didClickLogIn = React.useCallback(() => {
+    doLogIn()
+  }, [doLogIn])
+
+  const didClickLogOut = React.useCallback(() => {
+    doLogOut()
+  }, [doLogOut])
+
   return (
     <div className='sticky overlay'>
       {data?.isLoggedIn ? (
@@ -42,11 +50,11 @@ const ControlCenter = () => {
           ) : (
             <Button onClick={didClickCompose}>Compose</Button>
           )}
-          <Button onClick={doLogOut}>Log Out</Button>
+          <Button onClick={didClickLogOut}>Log Out</Button>
         </>
       ) : (
         <>
-          <Button onClick={doLogIn}>Log In</Button>
+          <Button onClick={didClickLogIn}>Log In</Button>
         </>
       )}
     </div>

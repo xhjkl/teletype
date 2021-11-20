@@ -1,14 +1,20 @@
+import { ArticleContent } from './types'
 import prisma from './prisma'
 import saturateExcerpts from './saturateExcerpts'
 
+type Id = Pick<ArticleContent, 'id'>
+type Rest = Required<Omit<ArticleContent, 'id'>>
+
 export default {
   Query: {
-    add: (_, { x, y }) => x + y,
+    add: (_: never, { x, y }: { x: number; y: number }) => x + y,
 
-    isLoggedIn: (_, { sessionId }) => sessionId != null,
-    sessionId: (_, { sessionId }) => sessionId ?? null,
+    isLoggedIn: (_: never, { sessionId }: { sessionId: string }) =>
+      sessionId != null,
+    sessionId: (_: never, { sessionId }: { sessionId: string }) =>
+      sessionId ?? null,
 
-    article: (_, { id }) =>
+    article: (_: never, { id }: Id) =>
       prisma.article.findUnique({
         where: { id },
         rejectOnNotFound: false,
@@ -25,7 +31,15 @@ export default {
     logIn: () => '0',
     logOut: () => true,
 
-    createArticle: (_, { title, author, imageAddress, body }) =>
+    createArticle: (
+      _: never,
+      {
+        title,
+        author,
+        imageAddress,
+        body,
+      }: Pick<Rest, 'title' | 'author' | 'imageAddress' | 'body'>
+    ) =>
       prisma.article.create({
         data: {
           title,
@@ -36,7 +50,16 @@ export default {
         },
         select: { id: true },
       }),
-    updateArticle: (_, { id, title, author, imageAddress, body }) =>
+    updateArticle: (
+      _: never,
+      {
+        id,
+        title,
+        author,
+        imageAddress,
+        body,
+      }: Pick<Id & Rest, 'id' | 'title' | 'author' | 'imageAddress' | 'body'>
+    ) =>
       prisma.article.update({
         where: { id },
         data: {
@@ -47,7 +70,7 @@ export default {
         },
         select: { id: true },
       }),
-    removeArticle: (_, { id }) =>
+    removeArticle: (_: never, { id }: Id) =>
       prisma.article.delete({
         where: { id },
       }),
