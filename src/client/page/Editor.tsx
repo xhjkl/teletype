@@ -92,9 +92,10 @@ export default () => {
   const onCompleted = React.useCallback((data) => {
     const newId = data?.createArticle?.id ?? data?.updateArticle?.id
     if (newId != null) {
-      navigate(`/article/${newId}`)
+      // Anyone hardly wants to return to editing going back in history.
+      navigate(`/article/${newId}`, { replace: true })
     } else {
-      navigate('/')
+      navigate('/', { replace: true })
     }
   }, [])
 
