@@ -111,7 +111,7 @@ export type LogIn = {
 
 export const LogOut = gql`
   mutation LogOut {
-    LogOut
+    logOut
   }
 `
 export type LogOut = {
