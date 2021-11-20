@@ -17,6 +17,7 @@ export default ({
   return (
     <>
       <div className='row mid' />
+      <div className='row mid' />
       <ArticleHeader>{title}</ArticleHeader>
       <ArticleAuthor name={author} date={publicationDate} />
       <ArticleHeroImage src={imageAddress} />
