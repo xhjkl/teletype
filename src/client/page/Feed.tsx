@@ -1,4 +1,6 @@
-import * as React from 'react'
+/** @jsx createElement */
+/** @jsxFrag Fragment */
+import { Fragment, createElement } from 'react'
 import { useQuery } from '@apollo/client'
 
 import { Excerpts } from '../../lib/queries'

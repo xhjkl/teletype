@@ -1,4 +1,6 @@
-import * as React from 'react'
+/** @jsx createElement */
+/** @jsxFrag Fragment */
+import { Fragment, createElement, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 
@@ -18,7 +20,7 @@ export default () => {
 
   const navigate = useNavigate()
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!error && !loading && data?.article == null) {
       // Perhaps this article has been deleted while we were reading it,
       // or it never existed.

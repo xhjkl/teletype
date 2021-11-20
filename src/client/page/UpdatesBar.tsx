@@ -1,4 +1,6 @@
-import * as React from 'react'
+/** @jsx createElement */
+/** @jsxFrag Fragment */
+import { createElement } from 'react'
 
 import Button from '../view/Button'
 

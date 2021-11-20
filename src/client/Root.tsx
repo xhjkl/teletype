@@ -1,4 +1,6 @@
-import * as React from 'react'
+/** @jsx createElement */
+/** @jsxFrag Fragment */
+import { Fragment, createElement } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import Article from './page/Article'

@@ -1,4 +1,6 @@
-import * as React from 'react'
+/** @jsx createElement */
+/** @jsxFrag Fragment */
+import { Fragment, createElement, useCallback } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useMutation, useLazyQuery } from '@apollo/client'
 
@@ -25,19 +27,19 @@ const ControlCenter = () => {
 
   const navigate = useNavigate()
 
-  const didClickEdit = React.useCallback(() => {
+  const didClickEdit = useCallback(() => {
     navigate('./edit')
   }, [navigate])
 
-  const didClickCompose = React.useCallback(() => {
+  const didClickCompose = useCallback(() => {
     navigate('/article/new')
   }, [navigate])
 
-  const didClickLogIn = React.useCallback(() => {
+  const didClickLogIn = useCallback(() => {
     doLogIn()
   }, [doLogIn])
 
-  const didClickLogOut = React.useCallback(() => {
+  const didClickLogOut = useCallback(() => {
     doLogOut()
   }, [doLogOut])
 
