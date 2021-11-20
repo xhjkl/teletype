@@ -1,7 +1,6 @@
 import { join } from 'path'
 import createServer from 'fastify'
 import staticServer from 'fastify-static'
-import cors from 'fastify-cors'
 
 import Frame from './client/Frame'
 import Root from './client/Root'

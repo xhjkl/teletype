@@ -1,32 +1,17 @@
 import * as React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { gql, useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 
 import ControlCenter from './ControlCenter'
 
-import { ArticleContent } from '../../lib/types'
+import { Article as Query } from '../../lib/queries'
 
 import Article from '../view/Article'
-
-const article = gql`
-  query Article($id: String) {
-    article(id: $id) {
-      id
-      title
-      author
-      imageAddress
-      publicationDate
-      body
-    }
-  }
-`
 
 export default () => {
   const { articleId: id } = useParams()
 
-  const { error, loading, data } = useQuery<{
-    article: ArticleContent
-  }>(article, {
+  const { error, loading, data } = useQuery<Query>(Query, {
     variables: { id },
     pollInterval: 200 + 200 * Math.random(),
   })

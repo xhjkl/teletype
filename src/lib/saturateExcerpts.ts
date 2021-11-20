@@ -1,7 +1,7 @@
 import type { ArticleContent } from './types'
 
 /** Map an Article Content to that with an abbreviated form of its body. */
-export default (x: ArticleContent) => {
+export default (x: Pick<Partial<ArticleContent>, 'body' | 'excerpt'>) => {
   if (x.body == null) {
     return x
   }
