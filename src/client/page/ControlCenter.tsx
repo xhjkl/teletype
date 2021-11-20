@@ -1,38 +1,21 @@
 import * as React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { gql, useMutation, useLazyQuery, useQuery } from '@apollo/client'
+import { useMutation, useLazyQuery } from '@apollo/client'
+
+import { LogIn, LogOut, WhoAmI } from '../../lib/queries'
 
 import Button from '../view/Button'
 
-const whoAmI = gql`
-  query User($sessionId: String) {
-    isLoggedIn(sessionId: $sessionId)
-    sessionId(sessionId: $sessionId)
-  }
-`
-
-const logIn = gql`
-  mutation LogIn {
-    logIn
-  }
-`
-
-const logOut = gql`
-  mutation LogOut {
-    logOut
-  }
-`
-
 const ControlCenter = () => {
-  const [getWhoAmI, { data }] = useLazyQuery(whoAmI)
+  const [getWhoAmI, { data }] = useLazyQuery<WhoAmI>(WhoAmI)
 
-  const [doLogIn, {}] = useMutation(logIn, {
+  const [doLogIn, {}] = useMutation(LogIn, {
     onCompleted(data) {
       getWhoAmI({ variables: { sessionId: data.logIn } })
     },
   })
 
-  const [doLogOut, {}] = useMutation(logOut, {
+  const [doLogOut, {}] = useMutation(LogOut, {
     onCompleted() {
       getWhoAmI({ variables: {} })
     },

@@ -1,91 +1,22 @@
 import * as React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { gql, useQuery, useMutation } from '@apollo/client'
+import { useQuery, useMutation } from '@apollo/client'
 
-import { ArticleContent } from '../../lib/types'
+import {
+  Article,
+  CreateArticle,
+  RemoveArticle,
+  UpdateArticle,
+} from '../../lib/queries'
 import { isContentValid } from '../../lib/validate'
 
 import Editor from '../view/Editor'
-
-const article = gql`
-  query Article($id: String) {
-    article(id: $id) {
-      id
-      title
-      author
-      imageAddress
-      publicationDate
-      body
-    }
-  }
-`
-
-const excerpts = gql`
-  query Excerpts {
-    allArticles {
-      id
-      title
-      author
-      imageAddress
-      publicationDate
-      excerpt
-    }
-  }
-`
-
-const create = gql`
-  mutation CreateArticle(
-    $title: String!
-    $author: String!
-    $imageAddress: String
-    $body: String!
-  ) {
-    createArticle(
-      title: $title
-      author: $author
-      imageAddress: $imageAddress
-      body: $body
-    ) {
-      id
-    }
-  }
-`
-
-const update = gql`
-  mutation UpdateArticle(
-    $id: String!
-    $title: String!
-    $author: String!
-    $imageAddress: String
-    $body: String!
-  ) {
-    updateArticle(
-      id: $id
-      title: $title
-      author: $author
-      imageAddress: $imageAddress
-      body: $body
-    ) {
-      id
-    }
-  }
-`
-
-const remove = gql`
-  mutation RemoveArticle($id: String!) {
-    removeArticle(id: $id) {
-      id
-    }
-  }
-`
 
 export default () => {
   const { articleId: id } = useParams()
   const navigate = useNavigate()
 
-  const { error, loading, data } = useQuery<{
-    article: ArticleContent
-  }>(article, {
+  const { error, loading, data } = useQuery<Article>(Article, {
     variables: { id },
   })
 
@@ -99,16 +30,16 @@ export default () => {
     }
   }, [])
 
-  const [doCreate] = useMutation(create, {
+  const [doCreate] = useMutation(CreateArticle, {
     refetchQueries: 'all',
     onCompleted,
   })
-  const [doUpdate] = useMutation(update, {
+  const [doUpdate] = useMutation(UpdateArticle, {
     refetchQueries: 'all',
     update: (cache) => cache.evict({ broadcast: true }),
     onCompleted,
   })
-  const [doRemove] = useMutation(remove, {
+  const [doRemove] = useMutation(RemoveArticle, {
     refetchQueries: 'all',
     update: (cache) => cache.evict({ broadcast: true }),
     onCompleted,

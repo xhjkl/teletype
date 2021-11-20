@@ -1,30 +1,17 @@
 import * as React from 'react'
-import { gql, useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 
-import type { ArticleContent } from '../../lib/types'
+import { Excerpts } from '../../lib/queries'
 
 import UpdatesBar from './UpdatesBar'
 import ControlCenter from './ControlCenter'
 
 import Feed from '../view/Feed'
 
-const excerpts = gql`
-  query Excerpts {
-    allArticles {
-      id
-      title
-      author
-      imageAddress
-      publicationDate
-      excerpt
-    }
-  }
-`
-
 export default () => {
-  const { error, data } = useQuery<{
-    allArticles: Array<ArticleContent>
-  }>(excerpts, { pollInterval: 512 + 512 * Math.random() })
+  const { error, data } = useQuery<Excerpts>(Excerpts, {
+    pollInterval: 512 + 512 * Math.random(),
+  })
 
   if (error) {
     throw error
