@@ -1,4 +1,5 @@
-import * as React from 'react'
+/** @jsx createElement */
+import { createElement, useCallback, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useQuery, useMutation } from '@apollo/client'
 
@@ -20,7 +21,7 @@ export default () => {
     variables: { id },
   })
 
-  const onCompleted = React.useCallback((data) => {
+  const onCompleted = useCallback((data) => {
     const newId = data?.createArticle?.id ?? data?.updateArticle?.id
     if (newId != null) {
       // Anyone hardly wants to return to editing going back in history.
@@ -45,8 +46,8 @@ export default () => {
     onCompleted,
   })
 
-  const [shouldShowWarnings, setShouldShowWarnings] = React.useState(false)
-  const handleSubmit = React.useCallback(
+  const [shouldShowWarnings, setShouldShowWarnings] = useState(false)
+  const handleSubmit = useCallback(
     (
       actionKind: 'create' | 'update' | 'remove',
       title: string,

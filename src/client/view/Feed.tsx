@@ -1,4 +1,5 @@
-import * as React from 'react'
+/** @jsx createElement */
+import { createElement } from 'react'
 import { Link } from 'react-router-dom'
 
 import ArticleHeader from './ArticleHeader'
@@ -12,7 +13,7 @@ type Props = {
   articles?: Array<ArticleContent>
 }
 
-const Feed: React.FC<Props> = ({ articles = [] }) => (
+export default ({ articles = [] }: Props) => (
   <div className='feed container'>
     {articles.map(
       ({ id, title, author, publicationDate, imageAddress, excerpt }) => (
@@ -28,5 +29,3 @@ const Feed: React.FC<Props> = ({ articles = [] }) => (
     )}
   </div>
 )
-
-export default Feed
